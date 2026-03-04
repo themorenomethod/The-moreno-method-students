@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Técnica - THE MORENO METHOD</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.5in;
+            padding-bottom: 0.8in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 10px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .header h1 {
+            color: #003366;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .header h2 {
+            color: #00CED1;
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .section-title {
+            background: #003366;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: -15px -15px 15px -15px;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-field.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .info-field label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        
+        .info-field input,
+        .info-field select {
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 5px 0;
+            font-size: 12px;
+            width: 100%;
+            background: transparent;
+        }
+        
+        .consent-box {
+            border: 1px solid #003366;
+            padding: 12px;
+            background: #f9f9f9;
+            font-size: 10px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .consent-box p {
+            margin-bottom: 8px;
+        }
+        
+        .signature-area {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .signature-field {
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 5px 0;
+            font-size: 14px;
+            width: 100%;
+            background: transparent;
+            font-family: 'Brush Script MT', cursive, 'Arial';
+        }
+        
+        .signature-label {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 5px;
+            color: #666;
+        }
+        
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            font-size: 11px;
+            padding: 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .notes-area {
+            width: 100%;
+            min-height: 150px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 11px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+        
+        .level-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #00CED1;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .footer {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 8px;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .page {
+                margin: 0;
+                padding: 0.5in;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            max-width: 8.5in;
+        }
+        
+        .controls button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .controls button:hover {
+            background: #00CED1;
+        }
+        
+        .controls select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #003366;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls no-print">
+        <label for="nivelSelect"><strong>Seleccionar Nivel:</strong></label>
+        <select id="nivelSelect" onchange="cambiarNivel()">
+            <option value="NIVEL 1 - PRINCIPIANTE">NIVEL 1 - PRINCIPIANTE</option>
+            <option value="NIVEL 2 - BÁSICO">NIVEL 2 - BÁSICO</option>
+            <option value="NIVEL 3 - INTERMEDIO">NIVEL 3 - INTERMEDIO</option>
+            <option value="NIVEL 4 - AVANZADO">NIVEL 4 - AVANZADO</option>
+            <option value="NIVEL 5 - PROFESIONAL">NIVEL 5 - PROFESIONAL</option>
+        </select>
+        <button onclick="window.print()">🖨️ IMPRIMIR FICHA</button>
+    </div>
+
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dae8e48e-67ff-47b9-a29d-169e4831a7b1" alt="THE MORENO METHOD Logo">
+            </div>
+            <h1>THE MORENO METHOD</h1>
+            <h2>FICHA TÉCNICA DE ESTUDIANTE</h2>
+        </div>
+
+        <!-- INFORMACIÓN DEL ESTUDIANTE -->
+        <div class="section">
+            <div class="section-title">INFORMACIÓN DEL ESTUDIANTE</div>
+            <div class="info-grid">
+                <div class="info-field full-width">
+                    <label>NOMBRE COMPLETO:</label>
+                    <input type="text" placeholder="Escriba el nombre completo del estudiante">
+                </div>
+                <div class="info-field">
+                    <label>TELÉFONO:</label>
+                    <input type="tel" placeholder="+57 / +1">
+                </div>
+                <div class="info-field">
+                    <label>EMAIL:</label>
+                    <input type="email" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="info-field">
+                    <label>INSTAGRAM:</label>
+                    <input type="text" placeholder="@usuario">
+                </div>
+                <div class="info-field">
+                    <label>NIVEL ACTUAL:</label>
+                    <select id="nivelActual">
+                        <option value="NIVEL 1 - PRINCIPIANTE">NIVEL 1 - PRINCIPIANTE</option>
+                        <option value="NIVEL 2 - BÁSICO">NIVEL 2 - BÁSICO</option>
+                        <option value="NIVEL 3 - INTERMEDIO">NIVEL 3 - INTERMEDIO</option>
+                        <option value="NIVEL 4 - AVANZADO">NIVEL 4 - AVANZADO</option>
+                        <option value="NIVEL 5 - PROFESIONAL">NIVEL 5 - PROFESIONAL</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONSENTIMIENTO -->
+        <div class="section">
+            <div class="section-title">CONSENTIMIENTO Y AUTORIZACIÓN</div>
+            <div class="consent-box">
+                <p><strong>AUTORIZACIÓN DE USO DE IMAGEN Y MATERIAL AUDIOVISUAL</strong></p>
+                <p>Yo, el/la estudiante identificado/a en este documento, autorizo expresamente a <strong>THE MORENO METHOD LLC</strong> para utilizar mi imagen, voz, grabaciones de video, fotografías y cualquier material audiovisual capturado durante las clases, talleres, eventos y actividades relacionadas con el programa educativo.</p>
+                <p>Este material podrá ser utilizado con fines educativos, promocionales, de marketing digital, redes sociales (Instagram, YouTube, Facebook, TikTok), sitio web oficial, material didáctico y cualquier medio de difusión relacionado con THE MORENO METHOD.</p>
+                <p>Declaro que esta autorización es otorgada de manera voluntaria, sin recibir compensación económica alguna, y que comprendo el alcance de este consentimiento.</p>
+            </div>
+            <div class="signature-area">
+                <div>
+                    <input type="text" class="signature-field" placeholder="Escriba la firma del estudiante">
+                    <div class="signature-label">FIRMA DEL ESTUDIANTE</div>
+                </div>
+                <div>
+                    <input type="date" class="signature-field" style="font-family: 'Arial', sans-serif;">
+                    <div class="signature-label">FECHA</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHECKLIST DE PROGRESO -->
+        <div class="section">
+            <div class="section-title" id="checklistTitle">CHECKLIST DE PROGRESO - NIVEL 1</div>
+            <div class="checklist" id="checklistContainer">
+                <!-- Nivel 1 - Principiante -->
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_1">
+                    <label for="check1_1">Postura básica y alineación</label>
+                </div>
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_2">
+                    <label for="check1_2">Paso básico On1</label>
+                </div>
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_3">
+                    <label for="check1_3">Marcación de tiempo musical</label>
+                </div>
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_4">
+                    <label for="check1_4">Giro básico a la derecha</label>
+                </div>
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_5">
+                    <label for="check1_5">Giro básico a la izquierda</label>
+                </div>
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_6">
+                    <label for="check1_6">Cross Body Lead (Dile que no)</label>
+                </div>
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_7">
+                    <label for="check1_7">Balance y transferencia de peso</label>
+                </div>
+                <div class="checklist-item checklist-nivel1">
+                    <input type="checkbox" id="check1_8">
+                    <label for="check1_8">Conexión en pareja básica</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTAS Y OBSERVACIONES -->
+        <div class="section">
+            <div class="section-title">NOTAS Y OBSERVACIONES</div>
+            <textarea class="notes-area" placeholder="Escriba aquí observaciones sobre el progreso del estudiante, áreas de mejora, logros destacados, recomendaciones personalizadas, etc."></textarea>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <strong>THE MORENO METHOD LLC</strong> | themorenomethod.co.site | @themoreno.method<br>
+            Educación en Danza de Excelencia | Salsa · Biomecánica · Metodología Innovadora
+        </div>
+    </div>
+
+    <script>
+        const checklistItems = {
+            'NIVEL 1 - PRINCIPIANTE': [
+                'Postura básica y alineación',
+                'Paso básico On1',
+                'Marcación de tiempo musical',
+                'Giro básico a la derecha',
+                'Giro básico a la izquierda',
+                'Cross Body Lead (Dile que no)',
+                'Balance y transferencia de peso',
+                'Conexión en pareja básica'
+            ],
+            'NIVEL 2 - BÁSICO': [
+                'Paso básico On2 (Mambo)',
+                'Giros múltiples (dobles y triples)',
+                'Enchufla y variaciones',
+                'Sombrero básico',
+                'Setenta básico',
+                'Vacilala simple',
+                'Shines básicos',
+                'Musicalidad y fraseo'
+            ],
+            'NIVEL 3 - INTERMEDIO': [
+                'Combinaciones de giros complejas',
+                'Styling avanzado (brazos y torso)',
+                'Footwork intermedio',
+                'Body rolls y ondulaciones',
+                'Cambios de dirección fluidos',
+                'Leading/Following avanzado',
+                'Improvisación musical',
+                'Técnica de aislamiento corporal'
+            ],
+            'NIVEL 4 - AVANZADO': [
+                'Técnica de giros profesional',
+                'Acrobacias y lifts básicos',
+                'Styling profesional completo',
+                'Footwork avanzado (taps, slides)',
+                'Interpretación musical profunda',
+                'Coreografía y secuencias',
+                'Técnica de performance',
+                'Trabajo de piso y niveles'
+            ],
+            'NIVEL 5 - PROFESIONAL': [
+                'Dominio completo de estilos (On1, On2, Caleño)',
+                'Acrobacias avanzadas certificadas',
+                'Creación coreográfica original',
+                'Capacidad de instrucción y enseñanza',
+                'Performance escénico profesional',
+                'Musicalidad y timing perfecto',
+                'Biomecánica aplicada a movimiento',
+                'Certificación como instructor TMM'
+            ]
+        };
+
+        function cambiarNivel() {
+            const select = document.getElementById('nivelSelect');
+            const nivel = select.value;
+            const checklistContainer = document.getElementById('checklistContainer');
+            const checklistTitle = document.getElementById('checklistTitle');
+            const nivelActual = document.getElementById('nivelActual');
+            
+            nivelActual.value = nivel;
+            checklistTitle.textContent = `CHECKLIST DE PROGRESO - ${nivel}`;
+            
+            checklistContainer.innerHTML = '';
+            
+            checklistItems[nivel].forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'checklist-item';
+                div.innerHTML = `
+                    <input type="checkbox" id="check_${index}">
+                    <label for="check_${index}">${item}</label>
+                `;
+                checklistContainer.appendChild(div);
+            });
+        }
+
+        // Inicializar con Nivel 1
+        cambiarNivel();
+    </script>
+</body>
+</html>
