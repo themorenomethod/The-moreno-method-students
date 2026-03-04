@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 1 - Pasos y Figuras - THE MORENO METHOD</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.5in;
+            padding-bottom: 0.8in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .header h1 {
+            color: #003366;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .header h2 {
+            color: #00CED1;
+            font-size: 20px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        
+        .level-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #003366, #00CED1);
+            color: white;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .intro-section {
+            background: #f0f8ff;
+            border-left: 4px solid #00CED1;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+        
+        .intro-section h3 {
+            color: #003366;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .intro-section p {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .paso-card {
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            page-break-inside: avoid;
+        }
+        
+        .paso-header {
+            background: #003366;
+            color: white;
+            padding: 10px 15px;
+            margin: -15px -15px 15px -15px;
+            border-radius: 6px 6px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .paso-numero {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .paso-nombre {
+            font-size: 16px;
+            font-weight: bold;
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+        
+        .paso-tipo {
+            background: #00CED1;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .paso-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .paso-descripcion {
+            grid-column: 1 / -1;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .paso-detail-box {
+            background: #f9f9f9;
+            border-left: 3px solid #00CED1;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        
+        .paso-detail-box h4 {
+            color: #003366;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .paso-detail-box ul {
+            margin-left: 20px;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+        
+        .paso-detail-box ol {
+            margin-left: 20px;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+        
+        .counts-box {
+            background: #e8f4f8;
+            border: 2px solid #00CED1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #003366;
+            font-size: 14px;
+        }
+        
+        .icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .footer {
+            position: relative;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+            border-top: 2px solid #ccc;
+            padding-top: 10px;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 8px;
+            max-width: 8.5in;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .controls button {
+            background: linear-gradient(135deg, #003366, #00CED1);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 0 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .page {
+                margin: 0;
+                padding: 0.5in;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls no-print">
+        <button onclick="window.print()">🖨️ IMPRIMIR GUÍA</button>
+        <button onclick="window.location.href='index.html'">📋 VER FICHA TÉCNICA</button>
+    </div>
+
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dae8e48e-67ff-47b9-a29d-169e4831a7b1" alt="THE MORENO METHOD Logo">
+            </div>
+            <h1>THE MORENO METHOD</h1>
+            <h2>GUÍA DE PASOS Y FIGURAS</h2>
+            <div class="level-badge">NIVEL 1 - PRINCIPIANTE</div>
+        </div>
+
+        <!-- INTRODUCCIÓN -->
+        <div class="intro-section">
+            <h3>📘 Objetivo del Nivel 1</h3>
+            <p>El Nivel 1 - Principiante establece las bases fundamentales de la salsa On1 (estilo LA). Los estudiantes aprenderán la postura correcta, el paso básico, giros esenciales y la conexión inicial en pareja. Este nivel enfatiza el timing musical (marcación en 1), la alineación corporal y el desarrollo de la memoria muscular para los movimientos básicos.</p>
+        </div>
+
+        <!-- PASO 1: POSTURA Y ALINEACIÓN -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">01</span>
+                <span class="paso-nombre">POSTURA BÁSICA Y ALINEACIÓN</span>
+                <span class="paso-tipo">FUNDAMENTO</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    Base fundamental de todo movimiento en salsa. La postura correcta permite balance, fluidez y previene lesiones. Es el elemento técnico más importante del nivel principiante.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>🎯 Puntos Clave</h4>
+                    <ul>
+                        <li>Pies separados ancho de caderas</li>
+                        <li>Rodillas ligeramente flexionadas</li>
+                        <li>Columna vertebral alargada</li>
+                        <li>Hombros relajados hacia abajo</li>
+                        <li>Mirada al frente (no al piso)</li>
+                        <li>Core activado (abdomen firme)</li>
+                    </ul>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>⚠️ Errores Comunes</h4>
+                    <ul>
+                        <li>Mirar hacia abajo constantemente</li>
+                        <li>Rodillas rígidas o bloqueadas</li>
+                        <li>Hombros tensos o elevados</li>
+                        <li>Peso distribuido incorrectamente</li>
+                        <li>Espalda arqueada o encorvada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 2: PASO BÁSICO ON1 -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">02</span>
+                <span class="paso-nombre">PASO BÁSICO ON1</span>
+                <span class="paso-tipo">BÁSICO</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    El paso fundamental de la salsa estilo LA (On1). Consiste en 3 pasos y una pausa en cada medio ciclo de 8 tiempos musicales. El líder avanza en tiempo 1, la seguidora retrocede.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👨 Líder (Leader)</h4>
+                    <ol>
+                        <li><strong>1:</strong> Paso izquierdo hacia adelante</li>
+                        <li><strong>2:</strong> Peso en pie derecho (en lugar)</li>
+                        <li><strong>3:</strong> Pie izquierdo regresa a posición</li>
+                        <li><strong>4:</strong> Pausa</li>
+                        <li><strong>5:</strong> Paso derecho hacia atrás</li>
+                        <li><strong>6:</strong> Peso en pie izquierdo (en lugar)</li>
+                        <li><strong>7:</strong> Pie derecho regresa a posición</li>
+                        <li><strong>8:</strong> Pausa</li>
+                    </ol>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👩 Seguidora (Follower)</h4>
+                    <ol>
+                        <li><strong>1:</strong> Paso derecho hacia atrás</li>
+                        <li><strong>2:</strong> Peso en pie izquierdo (en lugar)</li>
+                        <li><strong>3:</strong> Pie derecho regresa a posición</li>
+                        <li><strong>4:</strong> Pausa</li>
+                        <li><strong>5:</strong> Paso izquierdo hacia adelante</li>
+                        <li><strong>6:</strong> Peso en pie derecho (en lugar)</li>
+                        <li><strong>7:</strong> Pie izquierdo regresa a posición</li>
+                        <li><strong>8:</strong> Pausa</li>
+                    </ol>
+                </div>
+                <div class="counts-box">
+                    🎵 CONTEO: 1-2-3 (pausa) | 5-6-7 (pausa)
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 3: MARCACIÓN DE TIEMPO MUSICAL -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">03</span>
+                <span class="paso-nombre">MARCACIÓN DE TIEMPO MUSICAL</span>
+                <span class="paso-tipo">MUSICALIDAD</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    Habilidad de identificar y moverse al compás de la música salsa. En On1, el primer paso siempre coincide con el tiempo 1 del compás musical (downbeat). Esta sincronización es esencial para bailar en pareja.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>🎶 Elementos Musicales</h4>
+                    <ul>
+                        <li>Identificar el <strong>tiempo 1</strong> (clave)</li>
+                        <li>Contar estructura 8 tiempos</li>
+                        <li>Reconocer instrumentos: conga, bongó, clave</li>
+                        <li>Sentir el pulso constante (beat)</li>
+                        <li>Identificar frases musicales (breaks)</li>
+                    </ul>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>🎓 Ejercicios de Práctica</h4>
+                    <ul>
+                        <li>Contar en voz alta: 1-2-3-4-5-6-7-8</li>
+                        <li>Aplaudir en tiempo 1 y 5</li>
+                        <li>Caminar al ritmo de la música</li>
+                        <li>Identificar inicio de frases</li>
+                        <li>Escuchar canciones lentas primero</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER PÁGINA 1 -->
+        <div class="footer">
+            <strong>THE MORENO METHOD LLC</strong> | themorenomethod.co.site | @themoreno.method<br>
+            Educación en Danza de Excelencia | Nivel 1 - Principiante | Página 1 de 3
+        </div>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div class="page">
+        <!-- PASO 4: GIRO BÁSICO A LA DERECHA -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">04</span>
+                <span class="paso-nombre">GIRO BÁSICO A LA DERECHA (RIGHT Turn)</span>
+                <span class="paso-tipo">GIRO</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    Primer giro individual para la seguidora. El líder guía a la seguidora a girar 360° hacia su derecha (sentido horario) mientras él mantiene el paso básico. Giro fundamental en salsa On1.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👨 Líder</h4>
+                    <ol>
+                        <li><strong>1-3:</strong> Paso básico adelante</li>
+                        <li><strong>5:</strong> Levanta brazo derecho para señal</li>
+                        <li><strong>5-7:</strong> Mantiene brazo elevado, paso básico atrás</li>
+                        <li><strong>1:</strong> Baja brazo al finalizar giro</li>
+                    </ol>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👩 Seguidora</h4>
+                    <ol>
+                        <li><strong>1-3:</strong> Paso básico atrás</li>
+                        <li><strong>5:</strong> Inicia giro a la derecha (180°)</li>
+                        <li><strong>6:</strong> Continúa girando (270°)</li>
+                        <li><strong>7:</strong> Completa giro (360°) frente al líder</li>
+                        <li><strong>1:</strong> Retoma paso básico</li>
+                    </ol>
+                </div>
+                <div class="counts-box">
+                    🔄 GIRO EN: 5-6-7 (360° completo)
+                </div>
+                <div class="paso-detail-box" style="grid-column: 1 / -1;">
+                    <h4>💡 Tips Técnicos</h4>
+                    <ul>
+                        <li><strong>Spotting:</strong> Mantener mirada en un punto fijo, girar cabeza al final</li>
+                        <li><strong>Balance:</strong> Peso en metatarsos, rodillas flexibles</li>
+                        <li><strong>Brazo libre:</strong> Mantenerlo cerca del cuerpo durante giro</li>
+                        <li><strong>Conexión:</strong> Mano líder guía sin empujar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 5: GIRO BÁSICO A LA IZQUIERDA -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">05</span>
+                <span class="paso-nombre">GIRO BÁSICO A LA IZQUIERDA (Left Turn)</span>
+                <span class="paso-tipo">GIRO</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    Giro individual para la seguidora hacia su izquierda (sentido antihorario). Complementa el giro a la derecha y permite variedad en las combinaciones. Mecánica similar pero dirección opuesta.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👨 Líder</h4>
+                    <ol>
+                        <li><strong>1-3:</strong> Paso básico adelante</li>
+                        <li><strong>5:</strong> Empuja suavemente mano izquierda</li>
+                        <li><strong>5-7:</strong> Mantiene conexión circular, paso básico</li>
+                        <li><strong>1:</strong> Retoma posición cerrada</li>
+                    </ol>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👩 Seguidora</h4>
+                    <ol>
+                        <li><strong>1-3:</strong> Paso básico atrás</li>
+                        <li><strong>5:</strong> Inicia giro a la izquierda (180°)</li>
+                        <li><strong>6:</strong> Continúa girando (270°)</li>
+                        <li><strong>7:</strong> Completa giro (360°)</li>
+                        <li><strong>1:</strong> Retoma conexión con líder</li>
+                    </ol>
+                </div>
+                <div class="counts-box">
+                    🔄 GIRO EN: 5-6-7 (sentido antihorario)
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 6: CROSS BODY LEAD -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">06</span>
+                <span class="paso-nombre">CROSS BODY LEAD (Dile Que No)</span>
+                <span class="paso-tipo">BÁSICO</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    Movimiento fundamental donde la seguidora cruza frente al líder mientras él gira 90° para dejarle espacio. Crea cambio de lugar y dinamismo. Base para muchas figuras avanzadas.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👨 Líder</h4>
+                    <ol>
+                        <li><strong>1:</strong> Paso adelante izquierdo</li>
+                        <li><strong>2:</strong> Peso derecho, señala apertura</li>
+                        <li><strong>3:</strong> Gira 90° a su izquierda</li>
+                        <li><strong>5-7:</strong> Paso básico mirando nueva dirección</li>
+                    </ol>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👩 Seguidora</h4>
+                    <ol>
+                        <li><strong>1:</strong> Paso atrás derecho</li>
+                        <li><strong>2:</strong> Peso izquierdo</li>
+                        <li><strong>3:</strong> Avanza cruzando frente al líder</li>
+                        <li><strong>5-7:</strong> Paso básico en nueva posición</li>
+                    </ol>
+                </div>
+                <div class="counts-box">
+                    ↔️ CRUCE EN: 3 (seguidora pasa frente)
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER PÁGINA 2 -->
+        <div class="footer">
+            <strong>THE MORENO METHOD LLC</strong> | themorenomethod.co.site | @themoreno.method<br>
+            Educación en Danza de Excelencia | Nivel 1 - Principiante | Página 2 de 3
+        </div>
+    </div>
+
+    <!-- PÁGINA 3 -->
+    <div class="page">
+        <!-- PASO 7: BALANCE Y TRANSFERENCIA DE PESO -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">07</span>
+                <span class="paso-nombre">BALANCE Y TRANSFERENCIA DE PESO</span>
+                <span class="paso-tipo">TÉCNICA</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    Fundamento biomecánico esencial. Capacidad de trasladar el peso corporal suavemente de un pie a otro manteniendo equilibrio y control. Base para todos los pasos y giros.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>🎯 Principios Técnicos</h4>
+                    <ul>
+                        <li><strong>Eje central:</strong> Mantener alineación vertical</li>
+                        <li><strong>Transferencia gradual:</strong> No saltar entre pies</li>
+                        <li><strong>Apoyo completo:</strong> Distribuir peso en todo el pie</li>
+                        <li><strong>Rodillas flexibles:</strong> Absorber movimiento</li>
+                        <li><strong>Core activo:</strong> Estabilidad desde el centro</li>
+                    </ul>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>🏋️ Ejercicios de Entrenamiento</h4>
+                    <ol>
+                        <li>Transferencia lenta sin música</li>
+                        <li>Balance en un pie (10 segundos)</li>
+                        <li>Cambios de peso con ojos cerrados</li>
+                        <li>Práctica de metatarsos (puntas)</li>
+                        <li>Transferencia con brazos extendidos</li>
+                    </ol>
+                </div>
+                <div class="paso-detail-box" style="grid-column: 1 / -1;">
+                    <h4>⚠️ Errores Frecuentes</h4>
+                    <ul>
+                        <li>Peso en talones (debe estar en metatarsos)</li>
+                        <li>Transferencia brusca o saltada</li>
+                        <li>Rodillas bloqueadas sin flexión</li>
+                        <li>Pérdida del eje central (inclinación lateral)</li>
+                        <li>Tensión excesiva en piernas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 8: CONEXIÓN EN PAREJA BÁSICA -->
+        <div class="paso-card">
+            <div class="paso-header">
+                <span class="paso-numero">08</span>
+                <span class="paso-nombre">CONEXIÓN EN PAREJA BÁSICA</span>
+                <span class="paso-tipo">FUNDAMENTO</span>
+            </div>
+            <div class="paso-content">
+                <div class="paso-descripcion">
+                    Sistema de comunicación física entre líder y seguidora. A través de las manos, brazos y postura corporal se transmiten las señales de dirección, timing y energía del baile.
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👨 Responsabilidades del Líder</h4>
+                    <ul>
+                        <li><strong>Marco firme:</strong> Brazos con tono muscular constante</li>
+                        <li><strong>Señales claras:</strong> Indicaciones sin ambigüedad</li>
+                        <li><strong>Timing preciso:</strong> Marcar en tiempo 1</li>
+                        <li><strong>Anticipación:</strong> Preparar movimiento antes</li>
+                        <li><strong>Protección:</strong> Cuidar espacio de la seguidora</li>
+                    </ul>
+                </div>
+                <div class="paso-detail-box">
+                    <h4>👩 Responsabilidades de la Seguidora</h4>
+                    <ul>
+                        <li><strong>Escucha activa:</strong> Atención a señales del líder</li>
+                        <li><strong>Marco propio:</strong> Mantener estructura de brazos</li>
+                        <li><strong>Respuesta:</strong> Ejecutar movimientos indicados</li>
+                        <li><strong>Balance propio:</strong> No depender del líder</li>
+                        <li><strong>Musicalidad:</strong> Interpretar su propio styling</li>
+                    </ul>
+                </div>
+                <div class="paso-detail-box" style="grid-column: 1 / -1;">
+                    <h4>🤝 Tipos de Conexión</h4>
+                    <ul>
+                        <li><strong>Posición cerrada:</strong> Mano derecha líder en espalda, mano izquierda elevada</li>
+                        <li><strong>Posición abierta:</strong> Solo manos conectadas, brazos extendidos</li>
+                        <li><strong>Una mano:</strong> Conexión simple para giros</li>
+                        <li><strong>Dos manos:</strong> Conexión frontal para figuras</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESUMEN Y PROGRESIÓN -->
+        <div class="intro-section" style="margin-top: 25px;">
+            <h3>📊 Criterios de Evaluación para Avanzar a Nivel 2</h3>
+            <p><strong>El estudiante debe demostrar:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px; font-size: 12px; line-height: 1.8;">
+                <li>✓ Ejecución correcta del paso básico On1 sin mirar al piso</li>
+                <li>✓ Identificación auditiva del tiempo 1 en canciones de salsa</li>
+                <li>✓ Giros a derecha e izquierda con balance y spotting</li>
+                <li>✓ Transferencia de peso fluida y controlada</li>
+                <li>✓ Postura alineada durante todos los movimientos</li>
+                <li>✓ Conexión en pareja sin tensión excesiva</li>
+                <li>✓ Capacidad de bailar canciones completas (3-4 minutos)</li>
+                <li>✓ Cross Body Lead ejecutado correctamente</li>
+            </ul>
+        </div>
+
+        <!-- FOOTER PÁGINA 3 -->
+        <div class="footer">
+            <strong>THE MORENO METHOD LLC</strong> | themorenomethod.co.site | @themoreno.method<br>
+            Educación en Danza de Excelencia | Nivel 1 - Principiante | Página 3 de 3
+        </div>
+    </div>
+</body>
+</html>
