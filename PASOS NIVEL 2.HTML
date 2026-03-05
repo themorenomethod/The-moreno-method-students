@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasos Nivel 2 - THE MORENO METHOD</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.5in;
+            padding-bottom: 0.8in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 10px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .header h1 {
+            color: #003366;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .header h2 {
+            color: #00CED1;
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #00CED1;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .section-title {
+            background: #003366;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: -15px -15px 15px -15px;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-field.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .info-field label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        
+        .info-field input {
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 5px 0;
+            font-size: 12px;
+            width: 100%;
+            background: transparent;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 11px;
+            padding: 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            background: #fafafa;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .checklist-item span {
+            line-height: 1.4;
+        }
+        
+        .notes-area {
+            width: 100%;
+            min-height: 120px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 11px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+        
+        .footer {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 8px;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .page {
+                margin: 0;
+                padding: 0.5in;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            max-width: 8.5in;
+        }
+        
+        .controls button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .controls button:hover {
+            background: #00CED1;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls no-print">
+        <button onclick="window.print()">🖨️ IMPRIMIR CHECKLIST NIVEL 2</button>
+    </div>
+
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dae8e48e-67ff-47b9-a29d-169e4831a7b1" alt="THE MORENO METHOD Logo">
+            </div>
+            <h1>THE MORENO METHOD</h1>
+            <h2>CHECKLIST DE PASOS NIVEL 2</h2>
+            <div class="level-badge">NIVEL 2 - BÁSICO</div>
+        </div>
+
+        <!-- INFORMACIÓN DEL ESTUDIANTE / CLASE -->
+        <div class="section">
+            <div class="section-title">DATOS BÁSICOS</div>
+            <div class="info-grid">
+                <div class="info-field">
+                    <label>NOMBRE DEL ESTUDIANTE:</label>
+                    <input type="text" placeholder="Escriba el nombre completo">
+                </div>
+                <div class="info-field">
+                    <label>FECHA:</label>
+                    <input type="text" placeholder="DD / MM / AAAA">
+                </div>
+                <div class="info-field">
+                    <label>INSTRUCTOR:</label>
+                    <input type="text" placeholder="Nombre del instructor">
+                </div>
+                <div class="info-field">
+                    <label>SEDE / GRUPO:</label>
+                    <input type="text" placeholder="Ej: Grupo nivel 2 noche">
+                </div>
+            </div>
+        </div>
+
+        <!-- CHECKLIST PASOS NIVEL 2 -->
+        <div class="section">
+            <div class="section-title">PASOS BÁSICOS NIVEL 2</div>
+            <div class="checklist">
+                <!-- Pasos tomados de NIVEL-2-PASOS.docx -->
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso1">
+                    <span><strong>DINOS CRUCE POR DELANTE</strong> – March cross forward</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso2">
+                    <span><strong>CÍRCULO</strong> – Circle</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso3">
+                    <span><strong>PIQUES</strong> – Mambo</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso4">
+                    <span><strong>ATRÁS – ATRÁS PATADA (CALI STYLE)</strong> – Cali style basic</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso5">
+                    <span><strong>3 x 3</strong></span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso6">
+                    <span><strong>PUNTA DE DINOS</strong></span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso7">
+                    <span><strong>PADEBURE</strong> – Pass de bourree</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso8">
+                    <span><strong>PATACÓN PISAO</strong></span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso9">
+                    <span><strong>CUATROS</strong> – Four</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso10">
+                    <span><strong>PATINETA</strong> – Skateboard</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso11">
+                    <span><strong>TALÓN – TALÓN</strong> – Heal – heal</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso12">
+                    <span><strong>PICOS</strong></span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso13">
+                    <span><strong>ATRÁS – ATRÁS DOBLE</strong> – Double back rock</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso14">
+                    <span><strong>ATRÁS – ATRÁS TRIPLE</strong> – Triple back to back</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="paso15">
+                    <span><strong>OCHOS</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIGURAS NIVEL 2 -->
+        <div class="section">
+            <div class="section-title">FIGURAS NIVEL 2</div>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig1">
+                    <span><strong>NEW YORK WALK LEFT</strong></span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig2">
+                    <span><strong>NEW YORK RIGHT</strong></span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig3">
+                    <span><strong>BASIC 360</strong></span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig4">
+                    <span><strong>AROUND THE WORLD</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTAS -->
+        <div class="section">
+            <div class="section-title">NOTAS Y OBSERVACIONES</div>
+            <textarea class="notes-area" placeholder="Técnica, tiempos, coordinación, conexión, correcciones específicas, etc."></textarea>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <strong>THE MORENO METHOD LLC</strong> | themorenomethod.co.site | @themoreno.method<br>
+            Educación en Danza de Excelencia | Salsa · Biomecánica · Metodología Innovadora
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 Steps - THE MORENO METHOD</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: white;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.5in;
+            padding-bottom: 0.8in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 10px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .header h1 {
+            color: #003366;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .header h2 {
+            color: #00CED1;
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #00CED1;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .section-title {
+            background: #003366;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: -15px -15px 15px -15px;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-field.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .info-field label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        
+        .info-field input {
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 5px 0;
+            font-size: 12px;
+            width: 100%;
+            background: transparent;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 11px;
+            padding: 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            background: #fafafa;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .step-text {
+            line-height: 1.4;
+        }
+
+        .step-text small {
+            display: block;
+            font-size: 9px;
+            color: #555;
+        }
+        
+        .notes-area {
+            width: 100%;
+            min-height: 120px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 11px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+        
+        .footer {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 8px;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .page {
+                margin: 0;
+                padding: 0.5in;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            max-width: 8.5in;
+        }
+        
+        .controls button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .controls button:hover {
+            background: #00CED1;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls no-print">
+        <button onclick="window.print()">🖨️ PRINT LEVEL 2 CHECKLIST</button>
+    </div>
+
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dae8e48e-67ff-47b9-a29d-169e4831a7b1" alt="THE MORENO METHOD Logo">
+            </div>
+            <h1>THE MORENO METHOD</h1>
+            <h2>LEVEL 2 STEPS CHECKLIST</h2>
+            <div class="level-badge">LEVEL 2 - BASIC</div>
+        </div>
+
+        <!-- STUDENT / CLASS INFO -->
+        <div class="section">
+            <div class="section-title">BASIC INFORMATION / INFORMACIÓN BÁSICA</div>
+            <div class="info-grid">
+                <div class="info-field">
+                    <label>STUDENT NAME / NOMBRE DEL ESTUDIANTE:</label>
+                    <input type="text" placeholder="Write full name / Escriba el nombre completo">
+                </div>
+                <div class="info-field">
+                    <label>DATE / FECHA:</label>
+                    <input type="text" placeholder="MM / DD / YYYY">
+                </div>
+                <div class="info-field">
+                    <label>INSTRUCTOR / INSTRUCTOR:</label>
+                    <input type="text" placeholder="Instructor name / Nombre del instructor">
+                </div>
+                <div class="info-field">
+                    <label>GROUP / GRUPO:</label>
+                    <input type="text" placeholder="Ex: Level 2 group / Ej: Grupo nivel 2 noche">
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 2 STEPS CHECKLIST -->
+        <div class="section">
+            <div class="section-title">LEVEL 2 BASIC STEPS / PASOS BÁSICOS NIVEL 2</div>
+            <div class="checklist">
+                <!-- Steps from NIVEL-2-PASOS.docx -->
+                <div class="checklist-item">
+                    <input type="checkbox" id="step1">
+                    <div class="step-text">
+                        <strong>MARCH CROSS FORWARD</strong>
+                        <small>DINOS CRUCE POR DELANTE</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step2">
+                    <div class="step-text">
+                        <strong>CIRCLE</strong>
+                        <small>CÍRCULO</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step3">
+                    <div class="step-text">
+                        <strong>MAMBO</strong>
+                        <small>PIQUES</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4">
+                    <div class="step-text">
+                        <strong>CALI STYLE BASIC</strong>
+                        <small>ATRÁS – ATRÁS PATADA (CALI STYLE)</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step5">
+                    <div class="step-text">
+                        <strong>3 x 3</strong>
+                        <small>3 x 3</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step6">
+                    <div class="step-text">
+                        <strong>DINOS TIP</strong>
+                        <small>PUNTA DE DINOS</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step7">
+                    <div class="step-text">
+                        <strong>PASS DE BOURREE</strong>
+                        <small>PADEBURE</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step8">
+                    <div class="step-text">
+                        <strong>PATACÓN PISAO</strong>
+                        <small>PATACÓN PISAO</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step9">
+                    <div class="step-text">
+                        <strong>FOUR</strong>
+                        <small>CUATROS</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step10">
+                    <div class="step-text">
+                        <strong>SKATEBOARD</strong>
+                        <small>PATINETA</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step11">
+                    <div class="step-text">
+                        <strong>HEEL – HEEL</strong>
+                        <small>TALÓN – TALÓN</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step12">
+                    <div class="step-text">
+                        <strong>PICOS</strong>
+                        <small>PICOS</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step13">
+                    <div class="step-text">
+                        <strong>DOUBLE BACK ROCK</strong>
+                        <small>ATRÁS – ATRÁS DOBLE</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step14">
+                    <div class="step-text">
+                        <strong>TRIPLE BACK TO BACK</strong>
+                        <small>ATRÁS – ATRÁS TRIPLE</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step15">
+                    <div class="step-text">
+                        <strong>OCHOS</strong>
+                        <small>OCHOS</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 2 FIGURES -->
+        <div class="section">
+            <div class="section-title">LEVEL 2 FIGURES / FIGURAS NIVEL 2</div>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig1">
+                    <div class="step-text">
+                        <strong>NEW YORK WALK LEFT</strong>
+                        <small>NEW YORK WALK LEFT</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig2">
+                    <div class="step-text">
+                        <strong>NEW YORK RIGHT</strong>
+                        <small>NEW YORK RIGHT</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig3">
+                    <div class="step-text">
+                        <strong>BASIC 360</strong>
+                        <small>BASIC 360</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig4">
+                    <div class="step-text">
+                        <strong>AROUND THE WORLD</strong>
+                        <small>AROUND THE WORLD</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTES -->
+        <div class="section">
+            <div class="section-title">NOTES / NOTAS</div>
+            <textarea class="notes-area" placeholder="Technique, timing, lead & follow, specific corrections / Técnica, tiempos, conexión, correcciones específicas, etc."></textarea>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <strong>THE MORENO METHOD LLC</strong> | themorenomethod.co.site | @themoreno.method<br>
+            Excellence in Dance Education | Salsa · Biomechanics · Innovative Methodology
+        </div>
+    </div>
+</body>
+</html>
