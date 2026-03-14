@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 1 Progress Tracker - THE MORENO METHOD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @page { size: letter; margin: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0.5in auto;
+      padding: 0.5in;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #003366;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+    .logo {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 8px;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .header h1 {
+      color: #003366;
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .header h2 {
+      color: #00CED1;
+      font-size: 18px;
+      font-weight: normal;
+    }
+    .subheader {
+      text-align: center;
+      margin: 8px 0 15px 0;
+      font-size: 13px;
+      color: #003366;
+      font-weight: bold;
+    }
+    .section {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .section-title {
+      background: #003366;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      margin: -12px -12px 10px -12px;
+      border-radius: 6px 6px 0 0;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      font-size: 11px;
+    }
+    .info-field {
+      display: flex;
+      flex-direction: column;
+    }
+    .info-field label {
+      font-weight: bold;
+      color: #003366;
+      margin-bottom: 3px;
+    }
+    .info-field input {
+      border: none;
+      border-bottom: 1px solid #333;
+      padding: 3px 0;
+      font-size: 11px;
+      background: transparent;
+    }
+    .signature-box {
+      margin-top: 10px;
+      font-size: 11px;
+    }
+    .signature-canvas {
+      width: 100%;
+      height: 80px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: #fafafa;
+      margin-bottom: 5px;
+    }
+    .signature-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: #666;
+    }
+    .signature-actions button {
+      padding: 4px 10px;
+      font-size: 10px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      background: #003366;
+      color: #fff;
+    }
+    .table-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #003366;
+      margin-bottom: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 4px 3px;
+      text-align: left;
+    }
+    th {
+      background: #e8f2ff;
+      font-weight: bold;
+      color: #003366;
+    }
+    .center { text-align: center; }
+    .notes-area {
+      width: 100%;
+      min-height: 90px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 10px;
+      resize: vertical;
+    }
+    .footer {
+      margin-top: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 6px;
+      text-align: center;
+      font-size: 9px;
+      color: #666;
+    }
+    .controls {
+      max-width: 8.5in;
+      margin: 10px auto 0 auto;
+      padding: 10px;
+      text-align: center;
+      background: #f0f0f0;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .controls button {
+      margin: 0 5px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg,#003366,#00CED1);
+      color: #fff;
+      font-size: 12px;
+    }
+    .autosave {
+      font-size: 10px;
+      color: #008000;
+      margin-top: 5px;
+    }
+    @media print {
+      body { background: #fff; }
+      .controls { display: none; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="controls no-print">
+  <button onclick="saveData()">💾 SAVE</button>
+  <button onclick="addSession()">➕ ADD SESSION</button>
+  <button onclick="window.print()">🖨️ PRINT</button>
+  <button onclick="resetAll()">🔄 RESET ALL</button>
+  <div class="autosave" id="autosaveStatus">✓ Auto-saved</div>
+</div>
+
+<div class="page">
+  <div class="header">
+    <div class="logo">
+      <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dae8e48e-67ff-47b9-a29d-169e4831a7b1" alt="THE MORENO METHOD Logo">
+    </div>
+    <h1>THE MORENO METHOD</h1>
+    <h2>LEVEL 1 PROGRESS TRACKER</h2>
+  </div>
+
+  <div class="subheader">LEVEL 1 · FUNDAMENTALS</div>
+
+  <!-- BASIC INFORMATION -->
+  <div class="section">
+    <div class="section-title">BASIC INFORMATION</div>
+    <div class="info-grid">
+      <div class="info-field">
+        <label>Student name</label>
+        <input type="text" id="studentName">
+      </div>
+      <div class="info-field">
+        <label>Start date</label>
+        <input type="date" id="startDate">
+      </div>
+      <div class="info-field">
+        <label>Instructor</label>
+        <input type="text" id="instructor">
+      </div>
+      <div class="info-field">
+        <label>Group</label>
+        <input type="text" id="group">
+      </div>
+      <div class="info-field">
+        <label>Contact</label>
+        <input type="text" id="contact">
+      </div>
+      <div class="info-field">
+        <label>Notes</label>
+        <input type="text" id="shortNotes">
+      </div>
+    </div>
+
+    <div class="signature-box">
+      <label style="font-size:11px;font-weight:bold;color:#003366;">Student signature</label>
+      <canvas id="signaturePad" class="signature-canvas"></canvas>
+      <div class="signature-actions">
+        <span>Sign with mouse, finger, or stylus</span>
+        <button type="button" onclick="clearSignature()">🗑️ Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BASIC STEPS -->
+  <div class="section">
+    <div class="section-title">LEVEL 1 BASIC STEPS</div>
+    <div class="table-title">Basic steps</div>
+    <table id="basicStepsTable">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th class="center">Understanding</th>
+          <th class="center">Execution</th>
+          <th class="center">Mastery</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>March</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Forward · Forward</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Back · Back</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Forward & Back</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Forward · Forward (diagonal)</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Back · Back (diagonal)</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Side to side</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Side to side · Cross front</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Side to side · Cross back</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TURNS -->
+  <div class="section">
+    <div class="section-title">LEVEL 1 TURNS</div>
+    <table id="turnsTable">
+      <thead>
+        <tr>
+          <th>Turn</th>
+          <th class="center">Understanding</th>
+          <th class="center">Execution</th>
+          <th class="center">Mastery</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Right turn (march)</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Left turn (march)</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Right turn (2 techniques)</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Left turn (2 techniques)</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Basic turn (180° transfer)</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FIGURES -->
+  <div class="section">
+    <div class="section-title">LEVEL 1 FIGURES</div>
+    <table id="figuresTable">
+      <thead>
+        <tr>
+          <th>Figure</th>
+          <th class="center">Understanding</th>
+          <th class="center">Execution</th>
+          <th class="center">Mastery</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Left invitation</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Right invitation</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Cross Body Lead</td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+          <td class="center"><input type="checkbox"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CLASS SESSIONS -->
+  <div class="section">
+    <div class="section-title">CLASS SESSIONS</div>
+    <table id="sessionsTable">
+      <thead>
+        <tr>
+          <th class="center">Session</th>
+          <th>Date</th>
+          <th>Focus</th>
+          <th>Homework / practice</th>
+          <th>Coach notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="center">1</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="center">2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="center">3</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="center">4</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="center">5</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GENERAL NOTES -->
+  <div class="section">
+    <div class="section-title">GENERAL NOTES</div>
+    <textarea class="notes-area" id="generalNotes" placeholder="Use this space for global observations, goals, and recommendations for the student."></textarea>
+  </div>
+
+  <div class="footer">
+    <strong>THE MORENO METHOD LLC</strong> · themorenomethod.co.site · @themoreno.method<br>
+    Excellence in Dance Education · Salsa Biomechanics · Innovative Methodology
+  </div>
+</div>
+
+<script>
+  // Simple placeholders – you can connect these to localStorage
+  function saveData() {
+    const status = document.getElementById('autosaveStatus');
+    status.textContent = '✓ Saved';
+    setTimeout(() => status.textContent = '✓ Auto-saved', 1500);
+  }
+  function addSession() {
+    const table = document.getElementById('sessionsTable').querySelector('tbody');
+    const rowCount = table.rows.length + 1;
+    const row = table.insertRow();
+    row.innerHTML = `
+      <td class="center">${rowCount}</td>
+      <td></td><td></td><td></td><td></td>
+    `;
+  }
+  function resetAll() {
+    if (!confirm('Reset all fields?')) return;
+    document.querySelectorAll('input[type="text"], input[type="date"]').forEach(i => i.value = '');
+    document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+    document.getElementById('generalNotes').value = '';
+    clearSignature();
+  }
+
+  // Basic signature pad (simple clear – capture can be added later)
+  const canvas = document.getElementById('signaturePad');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+
+  function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+  window.addEventListener('load', resizeCanvas);
+  window.addEventListener('resize', resizeCanvas);
+
+  canvas.addEventListener('mousedown', e => { drawing = true; draw(e); });
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => drawing = false);
+  canvas.addEventListener('mouseout', () => drawing = false);
+
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; draw(e.touches[0]); });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); draw(e.touches[0]); });
+  canvas.addEventListener('touchend', () => drawing = false);
+
+  function draw(e) {
+    if (!drawing) return;
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#000';
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+  }
+
+  function clearSignature() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+  }
+</script>
+
+</body>
+</html>
