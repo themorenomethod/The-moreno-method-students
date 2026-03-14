@@ -256,8 +256,10 @@
         }
     </style>
 </head>
-<body> 
-        <div style="max-width:600px;margin:20px auto 10px auto;font-family:Arial,Helvetica,sans-serif;">
+<body>
+
+    <!-- PANEL DE ACCESO PRINCIPAL -->
+    <div style="max-width:600px;margin:20px auto 10px auto;font-family:Arial,Helvetica,sans-serif;">
       <h1 style="color:#003366;text-align:center;">THE MORENO METHOD – STUDENTS</h1>
       <h3 style="color:#00CED1;text-align:center;margin-bottom:20px;">Access Panel</h3>
 
@@ -286,6 +288,7 @@
       </ul>
     </div>
 
+    <!-- CONTROLES ORIGINALES DE LA FICHA -->
     <div class="controls no-print">
         <label for="nivelSelect"><strong>Seleccionar Nivel:</strong></label>
         <select id="nivelSelect" onchange="cambiarNivel()">
@@ -366,39 +369,7 @@
         <div class="section">
             <div class="section-title" id="checklistTitle">CHECKLIST DE PROGRESO - NIVEL 1</div>
             <div class="checklist" id="checklistContainer">
-                <!-- Nivel 1 - Principiante -->
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_1">
-                    <label for="check1_1">Postura básica y alineación</label>
-                </div>
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_2">
-                    <label for="check1_2">Paso básico On1</label>
-                </div>
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_3">
-                    <label for="check1_3">Marcación de tiempo musical</label>
-                </div>
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_4">
-                    <label for="check1_4">Giro básico a la derecha</label>
-                </div>
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_5">
-                    <label for="check1_5">Giro básico a la izquierda</label>
-                </div>
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_6">
-                    <label for="check1_6">Cross Body Lead (Dile que no)</label>
-                </div>
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_7">
-                    <label for="check1_7">Balance y transferencia de peso</label>
-                </div>
-                <div class="checklist-item checklist-nivel1">
-                    <input type="checkbox" id="check1_8">
-                    <label for="check1_8">Conexión en pareja básica</label>
-                </div>
+                <!-- Aquí se cargan los ítems por JavaScript -->
             </div>
         </div>
 
