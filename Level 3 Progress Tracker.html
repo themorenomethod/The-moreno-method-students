@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 Progress - THE MORENO METHOD</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            padding: 0;
+            margin: 0;
+        }
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.5in;
+            padding-bottom: 0.8in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 10px;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .header h1 {
+            color: #003366;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        .header h2 {
+            color: #00CED1;
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        .level-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #FF6B35;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background: white;
+        }
+        .section-title {
+            background: #003366;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: -15px -15px 15px -15px;
+            border-radius: 4px 4px 0 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .info-field {
+            display: flex;
+            flex-direction: column;
+        }
+        .info-field.full-width {
+            grid-column: 1 / -1;
+        }
+        .info-field label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        .info-field input {
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 5px 0;
+            font-size: 12px;
+            width: 100%;
+            background: transparent;
+        }
+        
+        /* Signature Pad Styles */
+        .signature-container {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            border: 2px solid #003366;
+            border-radius: 5px;
+            background: #fafafa;
+            cursor: crosshair;
+        }
+        .signature-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 5px;
+        }
+        .signature-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            align-items: center;
+        }
+        .signature-controls button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            font-size: 11px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .signature-controls button:hover {
+            background: #00CED1;
+        }
+        .signature-controls button.clear-btn {
+            background: #dc3545;
+        }
+        .signature-controls button.clear-btn:hover {
+            background: #c82333;
+        }
+        .signature-hint {
+            font-size: 10px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 11px;
+            padding: 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            background: #fafafa;
+        }
+        .checklist-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+        .step-text {
+            line-height: 1.4;
+        }
+        .step-text small {
+            display: block;
+            font-size: 9px;
+            color: #555;
+        }
+        
+        /* Class Session Styles */
+        .session-card {
+            background: #f8f9fa;
+            border: 2px solid #00CED1;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #00CED1;
+        }
+        .session-number {
+            font-size: 16px;
+            font-weight: bold;
+            color: #003366;
+        }
+        .session-date {
+            font-size: 12px;
+            color: #666;
+        }
+        .session-content {
+            display: grid;
+            gap: 10px;
+        }
+        .session-field {
+            display: flex;
+            flex-direction: column;
+        }
+        .session-field label {
+            font-size: 10px;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        .session-field textarea {
+            border: 1px solid #ccc;
+            padding: 8px;
+            font-size: 11px;
+            line-height: 1.5;
+            resize: vertical;
+            min-height: 60px;
+            border-radius: 3px;
+        }
+        .session-field input {
+            border: 1px solid #ccc;
+            padding: 5px 8px;
+            font-size: 11px;
+            border-radius: 3px;
+        }
+        
+        .notes-area {
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 11px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+        .footer {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 9px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 8px;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+            .page {
+                margin: 0;
+                padding: 0.5in;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .signature-controls {
+                display: none;
+            }
+            .signature-container {
+                cursor: default;
+            }
+        }
+        .controls {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            background: #003366;
+            border-radius: 8px;
+            max-width: 8.5in;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .controls button {
+            background: #00CED1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .controls button:hover {
+            background: #00a8b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .controls button.save-btn {
+            background: #28a745;
+        }
+        .controls button.save-btn:hover {
+            background: #218838;
+        }
+        .controls button.add-session-btn {
+            background: #007bff;
+        }
+        .controls button.add-session-btn:hover {
+            background: #0056b3;
+        }
+        .controls button.reset-btn {
+            background: #dc3545;
+        }
+        .controls button.reset-btn:hover {
+            background: #c82333;
+        }
+        .save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .save-indicator.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="save-indicator" id="saveIndicator">✓ Guardado automáticamente / Auto-saved</div>
+    
+    <div class="controls no-print">
+        <button class="save-btn" onclick="saveProgress()">💾 GUARDAR / SAVE</button>
+        <button class="add-session-btn" onclick="addClassSession()">➕ AGREGAR SESIÓN / ADD SESSION</button>
+        <button onclick="window.print()">🖨️ IMPRIMIR / PRINT</button>
+        <button class="reset-btn" onclick="resetForm()">🔄 REINICIAR TODO / RESET ALL</button>
+    </div>
+
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dae8e48e-67ff-47b9-a29d-169e4831a7b1" alt="THE MORENO METHOD Logo">
+            </div>
+            <h1>THE MORENO METHOD</h1>
+            <h2>LEVEL 3 PROGRESS TRACKER</h2>
+            <div class="level-badge">LEVEL 3 - REPIQUES</div>
+        </div>
+
+        <!-- STUDENT & CLASS INFO -->
+        <div class="section">
+            <div class="section-title">BASIC INFORMATION / INFORMACIÓN BÁSICA</div>
+            <div class="info-grid">
+                <div class="info-field full-width">
+                    <label>STUDENT SIGNATURE / FIRMA DEL ESTUDIANTE</label>
+                    <div class="signature-container">
+                        <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+                    </div>
+                    <div class="signature-controls no-print">
+                        <button class="clear-btn" onclick="clearSignature()">🗑️ Clear / Borrar</button>
+                        <span class="signature-hint">Sign with mouse, finger, or stylus / Firme con mouse, dedo o lápiz digital</span>
+                    </div>
+                </div>
+                <div class="info-field">
+                    <label>START DATE / FECHA DE INICIO</label>
+                    <input type="text" id="startDate" placeholder="MM / DD / YYYY">
+                </div>
+                <div class="info-field">
+                    <label>INSTRUCTOR / INSTRUCTOR</label>
+                    <input type="text" id="instructor" placeholder="Instructor name / Nombre del instructor">
+                </div>
+                <div class="info-field">
+                    <label>GROUP / GRUPO</label>
+                    <input type="text" id="group" placeholder="Ex: Level 3 group / Ej: Grupo nivel 3 noche">
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 3 STEPS -->
+        <div class="section">
+            <div class="section-title">LEVEL 3 REPIQUES STEPS / PASOS REPIQUES NIVEL 3</div>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="step1">
+                    <div class="step-text">
+                        <strong>LEVEL 1 STEPS</strong>
+                        <small>PASOS NIVEL 1</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step2">
+                    <div class="step-text">
+                        <strong>LEVEL 2 STEPS</strong>
+                        <small>PASOS NIVEL 2</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step3">
+                    <div class="step-text">
+                        <strong>BASIC KICK (CS)</strong>
+                        <small>BÁSICO PATADA (CALI STYLE)</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step4">
+                    <div class="step-text">
+                        <strong>BACK BASIC WITH DISPLACEMENT</strong>
+                        <small>BÁSICO ATRÁS CON DESPLAZAMIENTO</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step5">
+                    <div class="step-text">
+                        <strong>CUATRICOS</strong>
+                        <small>CUATRICOS</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step6">
+                    <div class="step-text">
+                        <strong>TRIPLE SKATEBOARD</strong>
+                        <small>PATINETA TRIPLE</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step7">
+                    <div class="step-text">
+                        <strong>GARZA PICOS</strong>
+                        <small>PICOS DE GARZA</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step8">
+                    <div class="step-text">
+                        <strong>MONTEADENTRO (SEBASTIAN)</strong>
+                        <small>MONTEADENTRO (SEBASTIÁN)</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step9">
+                    <div class="step-text">
+                        <strong>CALEÑITO</strong>
+                        <small>CALEÑITO</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step10">
+                    <div class="step-text">
+                        <strong>LATINOS</strong>
+                        <small>LATINOS</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step11">
+                    <div class="step-text">
+                        <strong>PUPPET</strong>
+                        <small>TÍTERE</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step12">
+                    <div class="step-text">
+                        <strong>CYCLONE</strong>
+                        <small>CICLÓN</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step13">
+                    <div class="step-text">
+                        <strong>CONTINUOUS HEEL</strong>
+                        <small>TALÓN CONTINUO</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step14">
+                    <div class="step-text">
+                        <strong>SUSSI QUIU</strong>
+                        <small>SUSSI QUIU</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="step15">
+                    <div class="step-text">
+                        <strong>CONTINUOUS 3 x 3</strong>
+                        <small>3 x 3 CONTINUO</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 3 FIGURES -->
+        <div class="section">
+            <div class="section-title">LEVEL 3 FIGURES / FIGURAS NIVEL 3</div>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig1">
+                    <div class="step-text">
+                        <strong>TITANIC</strong>
+                        <small>TITANIC</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig2">
+                    <div class="step-text">
+                        <strong>COPA</strong>
+                        <small>COPA</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig3">
+                    <div class="step-text">
+                        <strong>AROUND THE WORLD</strong>
+                        <small>ALREDEDOR DEL MUNDO</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig4">
+                    <div class="step-text">
+                        <strong>CARABALÍ</strong>
+                        <small>CARABALÍ</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig5">
+                    <div class="step-text">
+                        <strong>OPPOSITION WITH TURN &amp; INVITATION</strong>
+                        <small>OPOSICIÓN CON GIRO E INVITACIÓN</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig6">
+                    <div class="step-text">
+                        <strong>INVITATION WITH BRAKE ON 5</strong>
+                        <small>INVITACIÓN CON FRENO EN 5</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig7">
+                    <div class="step-text">
+                        <strong>CROSS BODY LEAD WITH TURN</strong>
+                        <small>CROSS BODY LEAD CON GIRO</small>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="fig8">
+                    <div class="step-text">
+                        <strong>CBL WITH DOUBLE INTERNAL TURN</strong>
+                        <small>CROSS BODY LEAD CON DOBLE GIRO INTERNO</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLASS SESSIONS -->
+        <div class="section">
+            <div class="section-title">CLASS SESSIONS / SESIONES DE CLASE</div>
+            <div id="sessionsContainer">
+                <!-- Sessions will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- GENERAL NOTES -->
+        <div class="section">
+            <div class="section-title">GENERAL NOTES / NOTAS GENERALES</div>
+            <textarea class="notes-area" id="generalNotes" placeholder="Overall observations, student progress, goals, recommendations / Observaciones generales, progreso del estudiante, metas, recomendaciones..."></textarea>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <strong>THE MORENO METHOD LLC</strong> • themorenomethod.co.site • @themoreno.method<br>
+            Excellence in Dance Education • Salsa Biomechanics • Innovative Methodology
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'moreno_method_level3_progress';
+        
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            const tempData = canvas.toDataURL();
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+            ctx.strokeStyle = '#003366';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            if (tempData) {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0);
+                };
+                img.src = tempData;
+            }
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function getCoordinates(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+            return { x, y };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const coords = getCoordinates(e);
+            lastX = coords.x;
+            lastY = coords.y;
+            e.preventDefault();
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const coords = getCoordinates(e);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
+            lastX = coords.x;
+            lastY = coords.y;
+            e.preventDefault();
+        }
+
+        function stopDrawing() {
+            if (isDrawing) {
+                isDrawing = false;
+                autoSave();
+            }
+        }
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            autoSave();
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+
+        let sessions = [];
+
+        function addClassSession() {
+            const sessionNumber = sessions.length + 1;
+            const today = new Date().toLocaleDateString('en-US');
+            
+            const session = {
+                id: Date.now(),
+                number: sessionNumber,
+                date: today,
+                worked: '',
+                toImprove: '',
+                instructor: ''
+            };
+            
+            sessions.push(session);
+            renderSessions();
+            autoSave();
+        }
+
+        function renderSessions() {
+            const container = document.getElementById('sessionsContainer');
+            container.innerHTML = '';
+            
+            sessions.forEach((session, index) => {
+                const sessionCard = document.createElement('div');
+                sessionCard.className = 'session-card';
+                sessionCard.innerHTML = `
+                    <div class="session-header">
+                        <span class="session-number">Sesión / Session ${session.number}</span>
+                        <span class="session-date">${session.date}</span>
+                    </div>
+                    <div class="session-content">
+                        <div class="session-field">
+                            <label>DATE / FECHA</label>
+                            <input type="text" value="${session.date}" onchange="updateSession(${index}, 'date', this.value)">
+                        </div>
+                        <div class="session-field">
+                            <label>WHAT WAS WORKED ON / QUÉ SE TRABAJÓ</label>
+                            <textarea onchange="updateSession(${index}, 'worked', this.value)" placeholder="Steps practiced, techniques, corrections made / Pasos practicados, técnicas, correcciones realizadas...">${session.worked}</textarea>
+                        </div>
+                        <div class="session-field">
+                            <label>WHAT TO IMPROVE / QUÉ MEJORAR</label>
+                            <textarea onchange="updateSession(${index}, 'toImprove', this.value)" placeholder="Areas needing work, homework, practice goals / Áreas por trabajar, tarea, metas de práctica...">${session.toImprove}</textarea>
+                        </div>
+                        <div class="session-field">
+                            <label>INSTRUCTOR / INSTRUCTOR</label>
+                            <input type="text" value="${session.instructor}" onchange="updateSession(${index}, 'instructor', this.value)" placeholder="Instructor name / Nombre del instructor">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(sessionCard);
+            });
+        }
+
+        function updateSession(index, field, value) {
+            sessions[index][field] = value;
+            autoSave();
+        }
+
+        function saveProgress() {
+            const data = {
+                signature: canvas.toDataURL(),
+                startDate: document.getElementById('startDate').value,
+                instructor: document.getElementById('instructor').value,
+                group: document.getElementById('group').value,
+                generalNotes: document.getElementById('generalNotes').value,
+                steps: {},
+                figures: {},
+                sessions: sessions
+            };
+            
+            for (let i = 1; i <= 15; i++) {
+                const checkbox = document.getElementById(`step${i}`);
+                if (checkbox) data.steps[`step${i}`] = checkbox.checked;
+            }
+            
+            for (let i = 1; i <= 8; i++) {
+                const checkbox = document.getElementById(`fig${i}`);
+                if (checkbox) data.figures[`fig${i}`] = checkbox.checked;
+            }
+            
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            showSaveIndicator();
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) return;
+            
+            const data = JSON.parse(saved);
+            
+            if (data.signature) {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0);
+                };
+                img.src = data.signature;
+            }
+            
+            if (data.startDate) document.getElementById('startDate').value = data.startDate;
+            if (data.instructor) document.getElementById('instructor').value = data.instructor;
+            if (data.group) document.getElementById('group').value = data.group;
+            if (data.generalNotes) document.getElementById('generalNotes').value = data.generalNotes;
+            
+            Object.keys(data.steps || {}).forEach(key => {
+                const checkbox = document.getElementById(key);
+                if (checkbox) checkbox.checked = data.steps[key];
+            });
+            
+            Object.keys(data.figures || {}).forEach(key => {
+                const checkbox = document.getElementById(key);
+                if (checkbox) checkbox.checked = data.figures[key];
+            });
+            
+            sessions = data.sessions || [];
+            renderSessions();
+        }
+
+        function autoSave() {
+            saveProgress();
+        }
+
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2000);
+        }
+
+        function resetForm() {
+            if (confirm('¿Está seguro de que desea reiniciar TODO el formulario? Se perderán todos los datos guardados.\n\nAre you sure you want to RESET ALL the form? All saved data will be lost.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        }
+
+        document.getElementById('startDate').addEventListener('change', autoSave);
+        document.getElementById('instructor').addEventListener('change', autoSave);
+        document.getElementById('group').addEventListener('change', autoSave);
+        document.getElementById('generalNotes').addEventListener('change', autoSave);
+        
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', autoSave);
+        });
+
+        window.addEventListener('load', loadProgress);
+
+        window.addEventListener('load', () => {
+            if (sessions.length === 0) {
+                addClassSession();
+            }
+        });
+    </script>
+</body>
+</html>
